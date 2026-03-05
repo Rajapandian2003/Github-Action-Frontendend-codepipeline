@@ -1,5 +1,14 @@
 name: Deployment
 
+env:
+  IMAGE_NAME: react-image
+  USER_NAME: rajapandian2003
+  REPO_NAME: react-github-action
+  VERSION: latest
+  CONTAINER_NAME: react-container
+  CONTAINER_PORT: 80
+  HOST_PORT: 3000
+
 on:
   workflow_run:
     workflows: ["sample CI"]
@@ -11,10 +20,10 @@ jobs:
     runs-on: self-hosted
     steps:
     - name: Delete the old image
-      run: docker rmi -f react-image || true
+      run: docker rmi -f $IMAGE_NAME || true
     
     - name: Delete the old image
-      run: docker rmi -f rajapandian2003/frontend-github-action:latest || true
+      run: docker rmi -f $USER_NAME/$REPO_NAME:$VERSION || true
 
     - name: Login to Docker
       env:
@@ -23,10 +32,10 @@ jobs:
       run: sudo docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
 
     - name: PUll the image
-      run: sudo docker pull rajapandian2003/frontend-github-action:latest
+      run: sudo docker pull $USER_NAME/$REPO_NAME:$VERSION
 
     - name: Delete the old container
-      run: docker rm -f react-container || true
+      run: docker rm -f $CONTAINER_NAME || true
     
     - name: Run Image
-      run : sudo docker run -d -p 3000:80 --name react-container rajapandian2003/frontend-github-action:latest
+      run : sudo docker run -d -p $HOST_PORT:$CONTAINER_PORT --name $CONTAINER_NAME $USER_NAME/$REPO_NAME:$VERSION

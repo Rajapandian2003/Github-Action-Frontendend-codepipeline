@@ -1,5 +1,11 @@
 name: sample CI
 
+env:
+  IMAGE_NAME: react-image
+  USER_NAME: rajapandian2003
+  REPO_NAME: frontend-github-action
+  VERSION: latest
+
 on: 
   push: 
     branches: ["main"]
@@ -18,13 +24,13 @@ jobs:
       
       - name: Build image
         run: |
-          docker build -t react-image .
+          docker build -t $IMAGE_NAME .
           docker images
       
       - name: Tag the image
         run: |
-          docker tag react-image rajapandian2003/frontend-github-action
+          docker tag $IMAGE_NAME $USER_NAME/$REPO_NAME
           docker images
       
       - name: Push to Dockerhub
-        run: docker push rajapandian2003/frontend-github-action:latest
+        run: docker push $USER_NAME/$REPO_NAME:$VERSION
