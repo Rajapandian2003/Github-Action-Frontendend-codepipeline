@@ -11,10 +11,10 @@ jobs:
     runs-on: self-hosted
     steps:
     - name: Delete the old image
-      run: docker rmi -f image || true
-
-    - name: Delete the old container
-      run: docker rm -f front-container || true
+      run: docker rmi -f react-image || true
+    
+    - name: Delete the old image
+      run: docker rmi -f rajapandian2003/frontend-github-action:latest || true
 
     - name: Login to Docker
       env:
@@ -24,6 +24,9 @@ jobs:
 
     - name: PUll the image
       run: sudo docker pull rajapandian2003/frontend-github-action:latest
+
+    - name: Delete the old container
+      run: docker rm -f react-container || true
     
     - name: Run Image
-      run : sudo docker run -d -p 3000:80 --name front-container rajapandian2003/frontend-github-action:latest
+      run : sudo docker run -d -p 3000:80 --name react-container rajapandian2003/frontend-github-action:latest
