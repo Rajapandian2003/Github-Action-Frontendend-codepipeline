@@ -18,7 +18,7 @@ jobs:
       
       - name: Build image
         run: |
-          docker build -t image .
+          docker build -t front-image .
           docker images
       
       - name: Tag the image
