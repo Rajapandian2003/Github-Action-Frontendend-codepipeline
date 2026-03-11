@@ -38,4 +38,4 @@ jobs:
       run: docker rm -f $CONTAINER_NAME || true
     
     - name: Run Image
-      run : sudo docker run -d -p $HOST_PORT:$CONTAINER_PORT --name $CONTAINER_NAME $USER_NAME/$REPO_NAME:$VERSION
+      run : sudo docker run -d -p $HOST_PORT:$CONTAINER_PORT --restart unless-stopped --name $CONTAINER_NAME $USER_NAME/$REPO_NAME:$VERSION
