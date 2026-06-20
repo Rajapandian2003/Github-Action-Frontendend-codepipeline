@@ -46,10 +46,10 @@ export default function Footer() {
               support@godwinshopping.com
             </p>
 
-            <p className="gs-footer-text">
+            {/* <p className="gs-footer-text">
               <i className="bi bi-telephone-fill me-2"></i>
              <a style={{color: "#cfcfcf"}} href=""> +91 6379362330</a>
-            </p>
+            </p> */}
 
             <p className="gs-footer-text">
               <i className="bi bi-geo-alt-fill me-2"></i>
