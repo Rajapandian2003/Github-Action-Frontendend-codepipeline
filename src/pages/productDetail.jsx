@@ -31,7 +31,7 @@ export default function Prodetail({cartiterms, setcartiterms}) {
 
 function addtocart() {
 
- const itermexist = cartiterms.find((itema) =>itema.product._id == product._id)
+ const itermexist = cartiterms.find((itema) =>itema.product._id === product._id)
 
  if (!itermexist) {
 
@@ -51,7 +51,7 @@ function increQty() {
 
   
 
-  if (product.stock == qty) {
+  if (product.stock === qty) {
     
     return;
   }
@@ -81,7 +81,7 @@ function deqty () {
 
           <div className="col-12 col-lg-5 img-fluid" id="product_image">
             <img
-              src= {product.images [0].image}
+              src= {product.images[0].image}
               alt="Product"
               height="500"
               width="500"
@@ -121,7 +121,7 @@ function deqty () {
               type="button"
               id="cart_btn"
               className="btn btn-primary d-inline ml-4"
-              disabled={product.stock == 0}
+              disabled={product.stock === 0}
             >
               Add to Cart
             </button>
