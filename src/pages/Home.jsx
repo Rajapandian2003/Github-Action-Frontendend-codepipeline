@@ -20,7 +20,7 @@ export default function Home() {
 
   return (
     <>
-      <h1 id="products_heading">Latest</h1>
+      <h1 id="products_heading">Late</h1>
 
       <section id="products" className="container mt-5">
         <div className="row">
